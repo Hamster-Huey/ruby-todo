@@ -24,7 +24,7 @@ class TodoListsController < ApplicationController
   # POST /todo_lists
   # POST /todo_lists.json
   def create
-    @todo_list = TodoList.new(todo_list_params)
+    @todo_list = TodoList.new(todo_list_params.merge(:owner => current_user._id))
 
     respond_to do |format|
       if @todo_list.save
@@ -62,6 +62,7 @@ class TodoListsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_list
       @todo_list = TodoList.find(params[:id])
