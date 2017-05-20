@@ -24,7 +24,7 @@ class TodoListsController < ApplicationController
   # POST /todo_lists
   # POST /todo_lists.json
   def create
-    @todo_list = TodoList.new(todo_list_params.merge(:owner => current_user._id))
+    @todo_list = TodoList.new(todo_list_params.merge(:owner => current_user.name))
 
     respond_to do |format|
       if @todo_list.save
@@ -70,6 +70,6 @@ class TodoListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_list_params
-      params.require(:todo_list).permit(:title, :description)
+      params.require(:todo_list).permit(:title, :description, :members)
     end
 end

@@ -5,4 +5,5 @@ class TodoList
   field :title, type: String
   field :description, type: String
   field :owner, type: String
+  field :members, type: String
 end
